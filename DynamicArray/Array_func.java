@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Array_func extends Menu_Details{
 	
-	private static final int initialCapacity=5;
+	private static final int initialCapacity=5;			//Array initial size is 5
 	private int size;
 	private int arr[];
 	private int cap;
@@ -18,17 +18,17 @@ public class Array_func extends Menu_Details{
 	public void insertEnd(int value)
 	{		
 		if(size==cap)
-			expandArray();
+			expandArray();		//Array length expand When array size equal to capacity  
 		arr[size]=value;
 		size++;
 		System.out.println("Value added at End ");
-
+		
 	}
 	
 	private void expandArray()
 	{
-		cap*=2;
-		arr = Arrays.copyOf(arr, cap);
+		cap*=2;			//Double the array capacity
+		arr = Arrays.copyOf(arr, cap);	//copy the all elements and paste to same arr with new length
 	}
 	
 	public void deleteAtEnd()
@@ -40,7 +40,7 @@ public class Array_func extends Menu_Details{
 		}
 		size--;
 		if(cap>initialCapacity && cap>3*size)
-			shringArray();
+			shringArray();			//shring the array If empty space is more than cap is 3 times of size 
 		System.out.println("Delete successfully");
 	}
 	
@@ -69,11 +69,11 @@ public class Array_func extends Menu_Details{
 			return;
 		}
 		if(size==cap)
-			expandArray();
+			expandArray();			//Array length expand When array size equal to capacity
 		for(int i=size-1;i>=position;i--)
-			arr[i+1]=arr[i];
-		arr[position]=value;
-		size++;
+			arr[i+1]=arr[i];		//swap the elements to next index
+		arr[position]=value;		//At last store the new value into the specific position 
+		size++;						//One value is added.so we increment the size		
 		System.out.println("Value added at specified position ");
 
 	}
@@ -91,26 +91,26 @@ public class Array_func extends Menu_Details{
 		}
 		
 		for(int i=position+1;i<size;i++)
-			arr[i-1]=arr[i];
-		size--;
+			arr[i-1]=arr[i];		//swap the element to previous index
+		size--;						//One value is deleted.so we decrement the size
 		
-		if(cap>initialCapacity && cap>5*size)
-			shringArray();
+		if(cap>initialCapacity && cap>3*size)
+			shringArray();			//shring the array If empty space is more than cap is 3 times of size 
 		System.out.println("Delete successfully...");
 		
 	}
 	private void shringArray() {
-				cap/=2;
-				arr = Arrays.copyOf(arr, cap);
+				cap/=2;			//convert Half the array capacity
+				arr = Arrays.copyOf(arr, cap); //copy the all elements and paste to same array with new length
 	}
 	public boolean contains(int value)
 	{
 		for(int i=0;i<size;i++)
 		{
 			if(arr[i]==value)
-				return true;
+				return true;	//If value is present .return true	
 		}
-		return false;
+		return false;		
 	}
 	
 	public  void getValue(int index)
